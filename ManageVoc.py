@@ -3,16 +3,15 @@ import os
 import random
 import sys
 
-
 word_dict = {}
-file = 'c:\\tmp\\data\\word_dict.json'
+file_name = 'c:\\tmp\\data\\word_dict.json'
 
 
 def add_word_from_input():
     while True:
-        key = input("Enter key - type end to end process : ")
+        key = input("Enter key - type exit to end : ")
         # break loop if user enters "exit"
-        if key == "end":
+        if key == "exit":
             break
         value = input("Enter value: ")
         if key in word_dict:
@@ -20,17 +19,15 @@ def add_word_from_input():
             continue
         word_dict[key] = value
         print(word_dict)
-        save_dict_to_file()
+        save_dict_to_file(word_dict)
     return word_dict
 
 
-def save_dict_to_file(words):
+def save_dict_to_file(dico):
     # Serialize data into file
     try:
-        with open(file, 'w') as f:
-            json.dump(words, f)
-    except FileNotFoundError as e:
-        print(f"Error: Unable to find file, Error: {e}")
+        with open(file_name, 'w') as f:
+            json.dump(dico, f)
     except ValueError as e:
         print(f"Error: Unable to decode JSON, Error: {e}")
 
@@ -42,30 +39,32 @@ def pick_random_word(word_dict):
     return key, word_dict[key]
 
 
-def read_dict_from_file(words):
+def read_dict_from_file():
     # read data from file:
     try:
-        with open(file, 'w') as f:
-            words = json.load(f)
-            print(words)
+        with open(file_name, 'r') as f:
+            dico = json.load(f)
+            print(dico)
     except FileNotFoundError as e:
         print(f"Error: Unable to find file, Error: {e}")
-    return words
+    return dico
 
 
 def guess_the_word(word_dict):
-    for item in word_dict.items():
-        print(item)
+    for key, value in word_dict.items():
+        print(f"Key: {key}, Value: {value}")
     guess = input("Enter your guess: ")
     if guess in word_dict.values():
         print("Congratulations! You guessed the word.")
     else:
         print("Sorry, that's not the word.")
 
+
 def done():
     os.system('clear')  # clears stdout
     print("Goodbye")
     sys.exit()
+
 
 def main_menu():
     print("************ Menu *******************")
@@ -80,20 +79,19 @@ def main_menu():
         add_word_from_input()
         save_dict_to_file()
     if choice == "2":
-        read_dict_from_file(dict)
+        read_dict_from_file()
     #if choice == "3":
-    #    read_dict_from_file(dict)
+    #    read_dict_from_file()
     if choice == "4":
         done()
 
 
+# word_dict = read_dict_from_file(dict)
+# element = pick_random_word(word_dict)
+# print(f"L'élément à la position est : {element}")
+# add_word_from_input()
 
-#word_dict = read_dict_from_file(dict)
-#element = pick_random_word(word_dict)
-#print(f"L'élément à la position est : {element}")
-#add_word_from_input()
-
-#guess_the_word(element)
+# guess_the_word(element)
 if __name__ == "__main__":
-    read_dict_from_file(dict)
+    read_dict_from_file()
     main_menu()
