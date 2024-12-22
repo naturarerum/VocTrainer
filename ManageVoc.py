@@ -32,13 +32,6 @@ def save_dict_to_file(dico):
         print(f"Error: Unable to decode JSON, Error: {e}")
 
 
-def pick_random_word(word_dict):
-    position = random.randint(0, len(word_dict) - 1)
-    print(position)
-    key = list(word_dict.keys())[position]
-    return key, word_dict[key]
-
-
 def read_dict_from_file():
     # read data from file:
     try:
@@ -50,14 +43,28 @@ def read_dict_from_file():
     return dico
 
 
-def guess_the_word(word_dict):
-    for key, value in word_dict.items():
-        print(f"Key: {key}, Value: {value}")
-    guess = input("Enter your guess: ")
-    if guess in word_dict.values():
-        print("Congratulations! You guessed the word.")
-    else:
-        print("Sorry, that's not the word.")
+def pick_random_word(word_dict):
+    position = random.randint(0, len(word_dict) - 1)
+    print(position)
+    key = list(word_dict.keys())[position]
+    return key, word_dict[key]
+
+
+def guess_the_word():
+    good_answer = 0
+    while True:
+        key, value = random.choice(list(word_dict.items()))
+        # print(f"Clé: {key}, Valeur: {value}")
+        print("traduire :", key)
+        guess = input("Enter your guess (type exit to end process): ")
+        if key == "exit":
+            break
+        if guess == value:
+            print("Congratulations! You guessed the word.")
+            good_answer += 1
+        else:
+            print("Sorry, that's not the word.")
+    return good_answer
 
 
 def done():
@@ -66,32 +73,7 @@ def done():
     sys.exit()
 
 
-def main_menu():
-    print("************ Menu *******************")
-    print("1.Input new word")
-    print("2.Display the dictionary")
-    print("3.Knowledge test")
-    print("4.Exit")
-    print("*************************************")
-    choice: str = input("Select an option : ")
-
-    if choice == "1":
-        add_word_from_input()
-        save_dict_to_file()
-    if choice == "2":
-        read_dict_from_file()
-    #if choice == "3":
-    #    read_dict_from_file()
-    if choice == "4":
-        done()
-
-
-# word_dict = read_dict_from_file(dict)
-# element = pick_random_word(word_dict)
-# print(f"L'élément à la position est : {element}")
-# add_word_from_input()
-
-# guess_the_word(element)
-if __name__ == "__main__":
-    read_dict_from_file()
-    main_menu()
+word_dict = read_dict_from_file()
+element = pick_random_word(word_dict)
+add_word_from_input()
+guess_the_word()
