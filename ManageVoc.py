@@ -43,28 +43,27 @@ def read_dict_from_file():
     return dico
 
 
-def pick_random_word(word_dict):
-    position = random.randint(0, len(word_dict) - 1)
-    print(position)
-    key = list(word_dict.keys())[position]
-    return key, word_dict[key]
-
-
 def guess_the_word():
     good_answer = 0
+    number_of_runs = 0
     while True:
         key, value = random.choice(list(word_dict.items()))
         # print(f"Clé: {key}, Valeur: {value}")
         print("traduire :", key)
+        number_of_runs += 1
         guess = input("Enter your guess (type exit to end process): ")
-        if key == "exit":
+        if guess == "exit":
             break
         if guess == value:
             print("Congratulations! You guessed the word.")
             good_answer += 1
         else:
             print("Sorry, that's not the word.")
-    return good_answer
+    return good_answer, number_of_runs
+
+
+def calculate_score():
+    pass
 
 
 def done():
@@ -74,6 +73,6 @@ def done():
 
 
 word_dict = read_dict_from_file()
-element = pick_random_word(word_dict)
 add_word_from_input()
-guess_the_word()
+good_a, nb_runs = guess_the_word()
+print(good_a, nb_runs)
