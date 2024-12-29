@@ -4,7 +4,8 @@ import random
 import sys
 
 word_dict = {}
-file_name = 'c:\\tmp\\data\\word_dict.json'
+#file_name = 'c:\\tmp\\data\\word_dict.json'
+file_name = '/mnt/chromeos/MyFiles/Linuxfiles/VocTrainer/word_dict.json'
 
 
 def add_word_from_input():
@@ -20,6 +21,8 @@ def add_word_from_input():
         word_dict[key] = value
         print(word_dict)
         save_dict_to_file(word_dict)
+        guess_the_word
+        calculate_score
     return word_dict
 
 
@@ -63,8 +66,9 @@ def guess_the_word():
 
 
 def calculate_score():
-    pass
-
+    good_a, nb_runs = guess_the_word()
+    print(f"Total number of runs : {nb_runs}")
+    print(f"Total number of good answers : {good_a}")
 
 def done():
     os.system('clear')  # clears stdout
@@ -74,5 +78,4 @@ def done():
 
 word_dict = read_dict_from_file()
 add_word_from_input()
-good_a, nb_runs = guess_the_word()
-print(good_a, nb_runs)
+
