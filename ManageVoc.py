@@ -21,8 +21,6 @@ def add_word_from_input():
         word_dict[key] = value
         print(word_dict)
         save_dict_to_file(word_dict)
-        guess_the_word
-        calculate_score
     return word_dict
 
 
@@ -76,6 +74,12 @@ def done():
     sys.exit()
 
 
-word_dict = read_dict_from_file()
-add_word_from_input()
+def main():
+   word_dict = read_dict_from_file()
+   add_word_from_input()
+   good_a, nb_runs = guess_the_word()
+   calculate_score()
 
+
+if __name__ == "__main__":
+    main()
