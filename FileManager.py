@@ -11,7 +11,7 @@ class FileManager:
         try:
             with open(self.file_name, 'r') as f:
                 self.dico = json.load(f)
-                print(self.dico)
+                #print(self.dico)
         except FileNotFoundError as e:
             print(f"Error: Unable to find file, Error: {e}")
         return self.dico
@@ -24,8 +24,3 @@ class FileManager:
         except ValueError as e:
             print(f"Error: Unable to decode JSON, Error: {e}")
 
-
-
-filemanager = FileManager('/mnt/chromeos/MyFiles/Linuxfiles/VocTrainer/word_dict.json')
-print('running object oriented version')
-filemanager.read_dict_from_file()
