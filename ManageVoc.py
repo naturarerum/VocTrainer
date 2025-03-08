@@ -77,8 +77,8 @@ def done():
 def main():
    word_dict = read_dict_from_file()
    add_word_from_input()
-   good_a, nb_runs = guess_the_word()
-   calculate_score()
+#    good_a, nb_runs = guess_the_word()
+#    calculate_score()
 
 
 if __name__ == "__main__":
