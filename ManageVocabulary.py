@@ -1,4 +1,5 @@
 from FileManager import FileManager
+from WordTraining import WordTraining
 
 class ManageVocabulary:
     def __init__(self,dic):
@@ -33,6 +34,8 @@ def main():
     managevoc.add_word_from_input()
     managevoc.print_dictionnary_content()
     filemanager.save_dict_to_file()
+    training = WordTraining(word_dict)
+    training.guess_the_word()
    
     
 #    
