@@ -38,9 +38,7 @@ def main():
     training.guess_the_word()
     training.display_score()
     
-   
     
-#    
 
 if __name__ == "__main__":
     main()

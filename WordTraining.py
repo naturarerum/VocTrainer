@@ -14,7 +14,6 @@ class WordTraining:
         
         while True:
             key, value = random.choice(list(self.dic.items()))
-            # print(f"Clé: {key}, Valeur: {value}")
             print("traduire :", key)
             self.guess = input("Enter your guess (type exit to end process): ")
             if self.guess == "exit":
