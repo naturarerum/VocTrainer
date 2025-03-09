@@ -36,6 +36,8 @@ def main():
     filemanager.save_dict_to_file()
     training = WordTraining(word_dict)
     training.guess_the_word()
+    training.display_score()
+    
    
     
 #    
