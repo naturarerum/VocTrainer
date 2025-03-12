@@ -28,7 +28,8 @@ class ManageVocabulary:
 def main():
     print('*** running object oriented version ****')
     
-    filemanager = FileManager('/mnt/chromeos/MyFiles/Linuxfiles/VocTrainer/word_dict.json')
+    #filemanager = FileManager('/mnt/chromeos/MyFiles/Linuxfiles/VocTrainer/word_dict.json')
+    filemanager = FileManager('c:\\tmp\\data\\word_dict.json')
     word_dict = filemanager.read_dict_from_file()
     managevoc = ManageVocabulary(word_dict)
     managevoc.add_word_from_input()
