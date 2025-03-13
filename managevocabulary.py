@@ -1,8 +1,9 @@
-from FileManager import FileManager
-from WordTraining import WordTraining
+from filemanager import FileManager
+from wordtraining import WordTraining
+
 
 class ManageVocabulary:
-    def __init__(self,dic):
+    def __init__(self, dic):
         self.dic = dic
 
     def add_word_from_input(self):
@@ -17,10 +18,7 @@ class ManageVocabulary:
                 continue
             self.dic[key] = value
             print(self.dic)
-            #save_dict_to_file(word_dict)
-        #return word_dict
-        
-     
+
     def print_dictionnary_content(self):
         print(f"Contenu du dictionnaire : {self.dic}")
     
@@ -28,7 +26,7 @@ class ManageVocabulary:
 def main():
     print('*** running object oriented version ****')
     
-    #filemanager = FileManager('/mnt/chromeos/MyFiles/Linuxfiles/VocTrainer/word_dict.json')
+    # filemanager = FileManager('/mnt/chromeos/MyFiles/Linuxfiles/VocTrainer/word_dict.json')
     filemanager = FileManager('c:\\tmp\\data\\word_dict.json')
     word_dict = filemanager.read_dict_from_file()
     managevoc = ManageVocabulary(word_dict)
@@ -38,7 +36,6 @@ def main():
     training = WordTraining(word_dict)
     training.guess_the_word()
     training.display_score()
-    
     
 
 if __name__ == "__main__":

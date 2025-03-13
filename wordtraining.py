@@ -1,15 +1,13 @@
 import random
-#from FileManager import FileManager
 
 
 class WordTraining:
-    def __init__(self,dic):
+    def __init__(self, dic):
         self.dic = dic
         self.good_answer = 0
         self.bad_answer = 0
         self.number_of_runs = 0
 
-    
     def guess_the_word(self):
         
         while True:
