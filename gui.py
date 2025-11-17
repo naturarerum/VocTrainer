@@ -1,9 +1,11 @@
+from PySide6.QtCore import QSize
 from PySide6 import QtWidgets
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("")
+        self.setWindowTitle("Vocab")
+        self.setMinimumSize(QSize(400, 300))
 
 
     def setup_ui(self):
@@ -28,3 +30,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def setup_connections(self):
         pass
 
+app = QtWidgets.QApplication([])
+window = MainWindow()
+window.setup_ui()
+window.show()
+app.exec()
