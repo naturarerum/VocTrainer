@@ -1,24 +1,38 @@
-import json
+import sys
+import csv  
+from PySide6.QtWidgets import QFileDialog, QMessageBox
 
 
 class FileManager:
+    """
+    Gère les opérations de lecture et d'écriture sur le fichier CSV de vocabulaire.
+    """
 
-    def __init__(self, file_name):
-        self.file_name = file_name
+    def __init__(self):
+        self.filename = None
 
-    def read_dict_from_file(self):
-        # read data from file:
+    def read_csv(self):
+        """ Lit les données du fichier CSV et les retourne sous forme de liste de dictionnaires. """
         try:
-            with open(self.file_name, 'r') as f:
-                self.dico = json.load(f)
+            with open(self.filename, mode='r', newline='', encoding='utf-8') as f:
+               # csvreader = csv.reader(csvfile)
+                reader = csv.DictReader(f)
+                return list(reader)
         except FileNotFoundError as e:
             print(f"Error: Unable to find file, Error: {e}")
-        return self.dico
     
-    def save_dict_to_file(self):
-        # Serialize data into file
+    
+    def ajouter_entre(self, mot, traduction, categorie):
+        """ Ajoute une nouvelle entrée au fichier CSV. """
+        
+        nouvelle_entree = {'Mot': mot, 'Traduction': traduction, 'Catégorie': categorie}   
+        fieldnames = ['Mot', 'Traduction', 'Catégorie'] 
         try:
-            with open(self.file_name, 'w') as f:
-                json.dump(self.dico, f)
-        except ValueError as e:
-            print(f"Error: Unable to decode JSON, Error: {e}")
+            with open(self.filename, mode='a', newline='', encoding='utf-8') as f:
+                
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writerow(nouvelle_entree)
+        except Exception as e:
+            print(f"Error: Unable to write to file, Error: {e}")    
+       
+
