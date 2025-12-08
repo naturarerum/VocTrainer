@@ -1,5 +1,6 @@
 from PySide6.QtCore import QSize
-from PySide6.QtWidgets import QPushButton, QVBoxLayout, QMainWindow, QWidget,QApplication,QTableWidget,QFileDialog,QTableWidgetItem,QMessageBox
+from PySide6.QtWidgets import (QPushButton, QVBoxLayout, QMainWindow, QWidget,QApplication,QTableWidget,
+                               QFileDialog,QTableWidgetItem,QMessageBox)
 from filemanager import FileManager 
 
 class MainWindow(QWidget):
@@ -71,7 +72,7 @@ class MainWindow(QWidget):
                 self.display_csv_data()
                 
                 self.setWindowTitle(f"Vocab - {filename}")
-                QMessageBox.information(self, "Chargement Réussi", f"Le fichier **{filename}** a été chargé.")
+                #QMessageBox.information(self, "Chargement Réussi", f"Le fichier **{filename}** a été chargé.")
 
             except Exception as e:
                 QMessageBox.critical(self, "Erreur de Chargement", f"Impossible de lire le fichier : {e}")

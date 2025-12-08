@@ -22,7 +22,7 @@ class FileManager:
             print(f"Error: Unable to find file, Error: {e}")
     
     
-    def ajouter_entre(self, mot, traduction, categorie):
+    def add_word(self, mot, traduction, categorie):
         """ Ajoute une nouvelle entrée au fichier CSV. """
         
         nouvelle_entree = {'Mot': mot, 'Traduction': traduction, 'Catégorie': categorie}   
